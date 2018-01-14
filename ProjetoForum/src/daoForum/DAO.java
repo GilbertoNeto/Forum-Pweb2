@@ -13,6 +13,7 @@ import javax.persistence.Query;
 import org.eclipse.persistence.config.PersistenceUnitProperties;
 
 
+@SuppressWarnings("unused")
 public class DAO<T> implements DAOInterface<T> {
 	protected static EntityManager manager;
 
