@@ -23,14 +23,14 @@ public class testeSQL {
 		
 		List<Postagem> posts = testePost.localizarPostByTema("Java + JSP");
 		
+		p = testePost.localizarPostByTitulo("Criando projeto web + JPA");
+		
 		if (user == null)
 			System.out.println("Return null");
 		
 		System.out.println(user.getNomeUsuario());
 		
-		p = posts.get(0);
-		
-		System.out.println(p.getTema().getTema());
+		System.out.println(p.getPostagem());
 		
 		testeConect.fechar();
 

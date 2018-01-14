@@ -22,6 +22,21 @@ public class DAOPostagem extends DAO<Postagem> {
 		}
 	}
 	
+	
+
+	public Postagem localizarPostByTitulo(String titulo) {
+		
+		try {
+			
+			Query q = manager.createQuery("Select p from Postagem p where p.postagem = '" + titulo + "'");
+			
+			return (Postagem) q.getSingleResult();
+			
+		} catch (QueryException e) {
+			return null;
+		}
+	}
+	
 	@SuppressWarnings("unchecked")
 	public List<Postagem> localizarPostbyUser(int idUsuario){
 		
@@ -54,6 +69,7 @@ public class DAOPostagem extends DAO<Postagem> {
 			return null;
 		}
 	}
+	
 	
 	
 }
