@@ -15,15 +15,15 @@ public class Usuario implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="id_usuario")
 	private int idUsuario;
 
-	@Column(name="cod_coment")
-	private int codComent;
-
-	@Column(name="cod_postagem")
-	private int codPostagem;
+//	@Column(name="cod_coment")
+//	private int codComent;
+//
+//	@Column(name="cod_postagem")
+//	private int codPostagem;
 
 	private String email;
 
@@ -51,21 +51,21 @@ public class Usuario implements Serializable {
 		this.idUsuario = idUsuario;
 	}
 
-	public int getCodComent() {
-		return this.codComent;
-	}
-
-	public void setCodComent(int codComent) {
-		this.codComent = codComent;
-	}
-
-	public int getCodPostagem() {
-		return this.codPostagem;
-	}
-
-	public void setCodPostagem(int codPostagem) {
-		this.codPostagem = codPostagem;
-	}
+//	public int getCodComent() {
+//		return this.codComent;
+//	}
+//
+//	public void setCodComent(int codComent) {
+//		this.codComent = codComent;
+//	}
+//
+//	public int getCodPostagem() {
+//		return this.codPostagem;
+//	}
+//
+//	public void setCodPostagem(int codPostagem) {
+//		this.codPostagem = codPostagem;
+//	}
 
 	public String getEmail() {
 		return this.email;

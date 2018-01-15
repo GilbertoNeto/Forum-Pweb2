@@ -16,5 +16,33 @@ public class DAOUsuario extends DAO<Usuario> {
 		}
 	}
 	
+	public Usuario localizarUsuarioByNome(String nome) {
+		
+		try {
+			
+			Query q = manager.createQuery("Select u from Usuario u where u.nomeUsuario = '" + nome + "'");
+			
+			return (Usuario) q.getSingleResult();
+			
+		} catch (NoResultException e) {
+			return null;
+		}
+		
+	}
+	
+	public Usuario localizarUsuarioByEmail(String email) {
+		
+		try {
+			
+			Query q = manager.createQuery("Select u from Usuario u where u.email = '" + email + "'");
+			
+			return (Usuario) q.getSingleResult();
+			
+		} catch (NoResultException e) {
+			return null;
+		}
+		
+	}
+	
 	
 }
