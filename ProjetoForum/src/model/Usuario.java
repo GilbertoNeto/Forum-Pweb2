@@ -1,8 +1,17 @@
 package model;
 
 import java.io.Serializable;
-import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
+
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 
 
 /**
@@ -33,12 +42,12 @@ public class Usuario implements Serializable {
 	private String senha;
 
 	//bi-directional many-to-one association to Comentario
-	@OneToMany(mappedBy="usuario")
-	private List<Comentario> comentarios;
+	@OneToMany(mappedBy="usuario", cascade=CascadeType.ALL)
+	private ArrayList<Comentario> comentarios;
 
 	//bi-directional many-to-one association to Postagem
-	@OneToMany(mappedBy="usuario")
-	private List<Postagem> postagems;
+	@OneToMany(mappedBy="usuario", cascade=CascadeType.ALL)
+	private ArrayList<Postagem> postagems;
 
 	public Usuario() {
 	}
@@ -95,7 +104,7 @@ public class Usuario implements Serializable {
 		return this.comentarios;
 	}
 
-	public void setComentarios(List<Comentario> comentarios) {
+	public void setComentarios(ArrayList<Comentario> comentarios) {
 		this.comentarios = comentarios;
 	}
 
@@ -113,11 +122,11 @@ public class Usuario implements Serializable {
 		return comentario;
 	}
 
-	public List<Postagem> getPostagems() {
+	public ArrayList<Postagem> getPostagems() {
 		return this.postagems;
 	}
 
-	public void setPostagems(List<Postagem> postagems) {
+	public void setPostagems(ArrayList<Postagem> postagems) {
 		this.postagems = postagems;
 	}
 

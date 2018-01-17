@@ -1,8 +1,17 @@
 package model;
 
 import java.io.Serializable;
-import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 
 
 /**
@@ -18,14 +27,14 @@ public class Postagem implements Serializable {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int idpostagem;
 
-	@Column(name="cod_comentario")
-	private int codComentario;
+//	@Column(name="cod_comentario")
+//	private int codComentario;
 
 	private String postagem;
 
 	//bi-directional many-to-one association to Comentario
 	@OneToMany(mappedBy="postagem1")
-	private List<Comentario> comentarios;
+	private ArrayList<Comentario> comentarios;
 
 	//bi-directional one-to-one association to Comentario
 //	@OneToOne(mappedBy="postagem2")
@@ -52,13 +61,13 @@ public class Postagem implements Serializable {
 		this.idpostagem = idpostagem;
 	}
 
-	public int getCodComentario() {
-		return this.codComentario;
-	}
-
-	public void setCodComentario(int codComentario) {
-		this.codComentario = codComentario;
-	}
+//	public int getCodComentario() {
+//		return this.codComentario;
+//	}
+//
+//	public void setCodComentario(int codComentario) {
+//		this.codComentario = codComentario;
+//	}
 
 	public String getPostagem() {
 		return this.postagem;
@@ -68,11 +77,11 @@ public class Postagem implements Serializable {
 		this.postagem = postagem;
 	}
 
-	public List<Comentario> getComentarios() {
+	public ArrayList<Comentario> getComentarios() {
 		return this.comentarios;
 	}
 
-	public void setComentarios(List<Comentario> comentarios) {
+	public void setComentarios(ArrayList<Comentario> comentarios) {
 		this.comentarios = comentarios;
 	}
 

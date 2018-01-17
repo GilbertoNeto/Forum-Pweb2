@@ -1,8 +1,14 @@
 package model;
 
 import java.io.Serializable;
-import javax.persistence.*;
-import java.util.List;
+import java.util.ArrayList;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 
 
 /**
@@ -22,7 +28,7 @@ public class Tema implements Serializable {
 
 	//bi-directional many-to-one association to Postagem
 	@OneToMany(mappedBy="tema")
-	private List<Postagem> postagems;
+	private ArrayList<Postagem> postagems;
 
 	public Tema() {
 	}
@@ -43,11 +49,11 @@ public class Tema implements Serializable {
 		this.tema = tema;
 	}
 
-	public List<Postagem> getPostagems() {
+	public ArrayList<Postagem> getPostagems() {
 		return this.postagems;
 	}
 
-	public void setPostagems(List<Postagem> postagems) {
+	public void setPostagems(ArrayList<Postagem> postagems) {
 		this.postagems = postagems;
 	}
 

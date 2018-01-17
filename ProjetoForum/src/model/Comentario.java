@@ -1,7 +1,15 @@
 package model;
 
 import java.io.Serializable;
-import javax.persistence.*;
+
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.NamedQuery;
 
 
 /**
@@ -20,7 +28,7 @@ public class Comentario implements Serializable {
 	private String comentario;
 
 	//bi-directional many-to-one association to Postagem
-	@ManyToOne
+	@ManyToOne(cascade=CascadeType.ALL)
 	@JoinColumn(name="cod_post")
 	private Postagem postagem1;
 
@@ -30,7 +38,7 @@ public class Comentario implements Serializable {
 //	private Postagem postagem2;
 
 	//bi-directional many-to-one association to Usuario
-	@ManyToOne
+	@ManyToOne(cascade=CascadeType.ALL)
 	@JoinColumn(name="codusuario")
 	private Usuario usuario;
 

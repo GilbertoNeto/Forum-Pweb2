@@ -1,12 +1,11 @@
 package daoForum;
 
-import model.Comentario;
-
 import java.util.List;
 
+import javax.persistence.NoResultException;
 import javax.persistence.Query;
 
-import org.eclipse.persistence.exceptions.QueryException;
+import model.Comentario;
 
 public class DAOComentario extends DAO<Comentario> {
 
@@ -18,7 +17,7 @@ public class DAOComentario extends DAO<Comentario> {
 			
 			return (Comentario) q.getSingleResult();
 			
-		} catch (QueryException e) {
+		} catch (NoResultException e) {
 			return null;
 		}
 		
@@ -35,7 +34,7 @@ public class DAOComentario extends DAO<Comentario> {
 			
 			return coments;
 			
-		} catch (QueryException e) {
+		} catch (NoResultException e) {
 			return null;
 		}
 	}
@@ -51,7 +50,7 @@ public class DAOComentario extends DAO<Comentario> {
 			
 			return coments;
 			
-		} catch (QueryException e) {
+		} catch (NoResultException e) {
 			return null;
 		}
 	}

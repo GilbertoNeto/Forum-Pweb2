@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: 13-Jan-2018 às 23:01
+-- Generation Time: 17-Jan-2018 às 00:38
 -- Versão do servidor: 5.7.19-log
 -- PHP Version: 7.1.9
 
@@ -31,8 +31,8 @@ SET time_zone = "+00:00";
 DROP TABLE IF EXISTS `comentario`;
 CREATE TABLE IF NOT EXISTS `comentario` (
   `idcomentario` int(11) NOT NULL AUTO_INCREMENT,
-  `codusuario` int(11) NOT NULL,
-  `cod_post` int(11) NOT NULL,
+  `codusuario` int(11) DEFAULT NULL,
+  `cod_post` int(11) DEFAULT NULL,
   `comentario` varchar(200) NOT NULL,
   PRIMARY KEY (`idcomentario`),
   KEY `cod_usuario_idx` (`codusuario`),
@@ -48,7 +48,7 @@ CREATE TABLE IF NOT EXISTS `comentario` (
 DROP TABLE IF EXISTS `postagem`;
 CREATE TABLE IF NOT EXISTS `postagem` (
   `idpostagem` int(11) NOT NULL AUTO_INCREMENT,
-  `cod_usuario` int(11) NOT NULL,
+  `cod_usuario` int(11) DEFAULT NULL,
   `cod_tema` int(11) NOT NULL,
   `postagem` varchar(200) NOT NULL,
   `cod_comentario` int(11) DEFAULT NULL,
@@ -67,16 +67,9 @@ CREATE TABLE IF NOT EXISTS `postagem` (
 DROP TABLE IF EXISTS `sequence`;
 CREATE TABLE IF NOT EXISTS `sequence` (
   `SEQ_NAME` varchar(50) NOT NULL,
-  `SEQ_COUNT` decimal(38,0) DEFAULT NULL,
+  `SEQ_COUNT` int(11) DEFAULT NULL,
   PRIMARY KEY (`SEQ_NAME`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Extraindo dados da tabela `sequence`
---
-
-INSERT INTO `sequence` (`SEQ_NAME`, `SEQ_COUNT`) VALUES
-('SEQ_GEN', '0');
 
 -- --------------------------------------------------------
 
@@ -103,7 +96,7 @@ CREATE TABLE IF NOT EXISTS `usuario` (
   `nome_usuario` varchar(50) NOT NULL,
   `cod_postagem` int(11) DEFAULT NULL,
   `email` varchar(45) NOT NULL,
-  `senha` varchar(8) DEFAULT NULL,
+  `senha` varchar(8) NOT NULL,
   `cod_coment` int(11) DEFAULT NULL,
   PRIMARY KEY (`id_usuario`),
   KEY `cod_postagem_idx` (`cod_postagem`),
@@ -118,14 +111,14 @@ CREATE TABLE IF NOT EXISTS `usuario` (
 -- Limitadores para a tabela `comentario`
 --
 ALTER TABLE `comentario`
-  ADD CONSTRAINT `cod_post` FOREIGN KEY (`cod_post`) REFERENCES `postagem` (`idpostagem`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `cod_user` FOREIGN KEY (`codusuario`) REFERENCES `usuario` (`id_usuario`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  ADD CONSTRAINT `cod_post` FOREIGN KEY (`cod_post`) REFERENCES `postagem` (`idpostagem`) ON DELETE SET NULL ON UPDATE NO ACTION,
+  ADD CONSTRAINT `cod_user` FOREIGN KEY (`codusuario`) REFERENCES `usuario` (`id_usuario`) ON DELETE SET NULL ON UPDATE NO ACTION;
 
 --
 -- Limitadores para a tabela `postagem`
 --
 ALTER TABLE `postagem`
-  ADD CONSTRAINT `cod_comentario` FOREIGN KEY (`cod_comentario`) REFERENCES `comentario` (`idcomentario`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `cod_comentario` FOREIGN KEY (`cod_comentario`) REFERENCES `comentario` (`idcomentario`) ON DELETE CASCADE ON UPDATE NO ACTION,
   ADD CONSTRAINT `cod_tema` FOREIGN KEY (`cod_tema`) REFERENCES `tema` (`idtema`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `cod_usuario` FOREIGN KEY (`cod_usuario`) REFERENCES `usuario` (`id_usuario`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 

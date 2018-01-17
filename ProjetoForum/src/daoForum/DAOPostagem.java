@@ -2,6 +2,7 @@ package daoForum;
 
 import java.util.List;
 
+import javax.persistence.NoResultException;
 import javax.persistence.Query;
 
 import org.eclipse.persistence.exceptions.QueryException;
@@ -17,7 +18,7 @@ public class DAOPostagem extends DAO<Postagem> {
 			
 			return (Postagem) q.getSingleResult();
 
-		} catch (QueryException e) {
+		} catch (NoResultException e) {
 			return null;
 		}
 	}
@@ -32,7 +33,7 @@ public class DAOPostagem extends DAO<Postagem> {
 			
 			return (Postagem) q.getSingleResult();
 			
-		} catch (QueryException e) {
+		} catch (NoResultException e) {
 			return null;
 		}
 	}
@@ -48,7 +49,7 @@ public class DAOPostagem extends DAO<Postagem> {
 			
 			return posts;
 			
-		} catch (QueryException e) {
+		} catch (NoResultException e) {
 			return null;
 		}
 		
@@ -65,7 +66,7 @@ public class DAOPostagem extends DAO<Postagem> {
 			
 			return posts;
 			
-		} catch (QueryException e) {
+		} catch (NoResultException e) {
 			return null;
 		}
 	}

@@ -10,6 +10,7 @@ import controller.Fachada;
 
 public class testeSQL {
 
+	@SuppressWarnings("static-access")
 	public static void main(String[] args) throws Exception {
 		
 		DAOUsuario testeConect = new DAOUsuario();
@@ -26,11 +27,19 @@ public class testeSQL {
 //		
 //		Postagem p = testePost.localizarPostById(1);
 		
-		Usuario user = testeConect.localizarUsuarioById(1);
+//		Usuario user = testeConect.localizarUsuarioById(1);
 		
 //		Usuario usuario = Fachada.cadastrarUsuario("Gilberto Neto", "eu@email.com", "1111");
 		
-		Fachada.atualizarDadosUsuario("Gilberto Neto", "mudar@email.com", "mudar123");
+//		Fachada.atualizarDadosUsuario("Gilberto Neto", "mudar@email.com", "mudar144");
+		
+//		Fachada.Postar("Gilberto Neto", "TESTANDO", "Java + JSP");
+		
+//		fachada.RemoverPostagem("teste@email.com", "AAAA");
+		
+//		fachada.Comentar("teste@email.com", "AAAAA", "Comentario teste");
+		
+//		fachada.removerComentario("teste@email.com", "AAAAA", 6);
 		
 //		List<Comentario> c = testeComent.getComentarioByUsuario(1);
 //		
