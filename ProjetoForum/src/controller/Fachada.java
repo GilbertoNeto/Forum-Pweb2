@@ -39,6 +39,8 @@ public class Fachada {
 	
 	public static Usuario cadastrarUsuario  (String nome, String email, String senha) throws Exception {
 		
+		DAO.abrir();
+		
 		DAO.iniciar();
 		
 		
@@ -54,6 +56,7 @@ public class Fachada {
 			u.setSenha(senha);
 			daousuario.persistir(u);
 			DAO.efetivar();
+			DAO.fechar();
 			return u;
 			
 		} else {
@@ -63,6 +66,8 @@ public class Fachada {
 	}
 	
 	public static void removerUsuario (String email) throws Exception {
+		
+		DAO.abrir();
 		
 		DAO.iniciar();
 		
@@ -110,10 +115,14 @@ public class Fachada {
 		
 		daousuario.apagar(u);
 		DAO.efetivar();
+		
+		DAO.fechar();
 	}
 	
 	
 	public static void atualizarDadosUsuario (String nome, String email, String senha) throws Exception {
+		
+		DAO.abrir();
 		
 		DAO.iniciar();
 		
@@ -140,6 +149,8 @@ public class Fachada {
 	/*INICIO DOS MÉTODOS PARA POSTAGENS*/
 	
 	public static void Postar(String nomeUsuario, String postagem, String temaPostagem) throws Exception {
+		
+		DAO.abrir();
 		
 		DAO.iniciar();
 		
@@ -177,6 +188,8 @@ public class Fachada {
 	}
 	
 	public static void RemoverPostagem(String email, String postagem) throws Exception {
+		
+		DAO.abrir();
 		
 		DAO.iniciar();
 		
@@ -235,6 +248,8 @@ public class Fachada {
 	
 	public static void Comentar(String email, String postagem, String comentario) throws Exception {
 		
+		DAO.abrir();
+		
 		DAO.iniciar();
 		
 		Usuario u = daousuario.localizarUsuarioByEmail(email);
@@ -261,6 +276,8 @@ public class Fachada {
 	
 	
 	public static void removerComentario(String email, String postagem, int codComentario) throws Exception{
+		
+		DAO.abrir();
 		
 		DAO.iniciar();
 		
